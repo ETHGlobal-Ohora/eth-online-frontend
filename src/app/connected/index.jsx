@@ -1,10 +1,10 @@
 import React from "react";
-import "./Connect.css";
+import "./Connected.css";
 
-function ConnectPage() {
+function Connected() {
   return (
     <div className="connect-container">
-      <h1 className="connect-title">Connect!</h1>
+      <h1 className="connect-title">Connected!</h1>
       <div className="images-container">
         <div className="image-group">
           <img
@@ -32,9 +32,9 @@ function ConnectPage() {
           />
         </div>
       </div>
-      <p className="welcome-text">Welcome Finance US!</p>
+      <p className="welcome-text">Welcome to Finance US!</p>
     </div>
   );
 }
 
-export default ConnectPage;
+export default Connected;

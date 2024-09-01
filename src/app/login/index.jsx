@@ -1,19 +1,13 @@
 import React from "react";
-import "./App.css";
-import Profile from "./Profile";
+import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
-function Main() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-    </Router>
-  );
-}
+function Login() {
+  const nav = useNavigate();
+  const onLogin = () => {
+    nav("/connect-code");
+  };
 
-function App() {
   return (
     <div className="container">
       <header className="header">
@@ -46,7 +40,7 @@ function App() {
         <a href="#" className="forgot-password">
           Forgot password?
         </a>
-        <button type="submit" className="login-button">
+        <button onClick={onLogin} type="submit" className="login-button">
           Login
         </button>
       </form>
@@ -71,4 +65,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
