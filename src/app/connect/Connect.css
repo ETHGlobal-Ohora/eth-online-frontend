@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .connect-container {
+    width: 375px;
+    height: 812px;
+    background-color: white; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .connect-title {
+    color: #0056d2;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Outfit;
+    margin-bottom: 20px;
+    font-style: normal;
+    letter-spacing: 0.24px;
+  }
+  
+  .images-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .image-group {
+    position: relative;
+  }
+  
+  .ellipse {
+    width: 119px;
+    height: 119px;
+  }
+  
+  .character {
+    position: absolute;
+    top: 25px;
+    left: 5px; 
+    width: 119px;
+    height: 97px;
+  }
+  
+  .dots {
+    margin: 0 20px;
+    width: 50px;
+    height: auto;
+  }
+  
+  .welcome-text {
+    font-size: 18px;
+    color: #1B1B1B;
+    margin-top: 20px;
+  }
+  
