@@ -20,24 +20,50 @@ body {
   text-align: center; 
   justify-content: center;
 }
-  
+
+.step-indicator {
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+.step-number {
+  color: #2945FF;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-left:20px;
+}
+
+.step-number-total {
+  color: var(--Miscellaneous-Tab---Unselected, #999);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal; 
+  margin-left: 5px;
+}
+
 .profile-title {
   font-size: 24px;
   font-weight: bolder;
-  color: #2945FF;
+  color: #1B1B1B;
   margin-bottom: 20px;
   font-family: Outfit;
   line-height: 32px;
   letter-spacing: 0.24px;
-  padding: 0px 0px 60px 0px;
+  margin-right: 130px;
 }
-  
+
 .profile-image-container {
   position: relative;
   width: 150px;
   height: 150px;
+  margin-bottom: 30px;
 }
-  
+
 .profile-background {
   position: absolute;
   top: 0;
@@ -46,7 +72,7 @@ body {
   height: 100%;
   z-index: 1;
 }
-  
+
 .profile-picture {
   position: absolute;
   top: 10px;
@@ -64,6 +90,8 @@ body {
   height: 24px;
   padding: 7px;
   justify-content: center;
+  margin-left: 5px;
+  margin-bottom: 10px;
   align-items: center;
   flex-shrink: 0;
   border-radius: 40px;
@@ -73,16 +101,16 @@ body {
 }
 
 .edit-icon {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   top: 109px;
   left: 111px;
-  padding: 7px 0px 0px 0px;
+  margin-right: 10px;
   gap: 0px;
   position: absolute;
   z-index: 3;
 }
-  
+
 .profile-name {
   color: #2945FF;
   text-align: center;
@@ -91,17 +119,52 @@ body {
   font-style: normal;
   font-weight: bold;
   letter-spacing: 0.08px;
+  margin-top: 10px;
 }
-  
-.profile-username {
-  color: var(--Neutral-Dark-Light, #71727A);
-  text-align: center;
-  font-family: Inter;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0.12px;
+
+.profile-form {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.nickname-label {
+  font-size: 14px;
+  color: #1B1B1B;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-prefix {
   position: absolute;
-  top:520px;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #71727A;
 }
-  
+
+.nickname-input {
+  width: 100%;
+  padding: 10px 10px 10px 30px;
+  border-radius: 8px;
+  border: 1px solid #C5C6CC;
+  font-size: 14px;
+}
+
+.next-button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2945FF;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}

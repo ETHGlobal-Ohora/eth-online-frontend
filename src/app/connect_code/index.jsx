@@ -9,12 +9,28 @@ function ConnectCode() {
   };
 
   return (
-    <div>
-      <p className="text-3xl font-bold text-center mb-4">3Q4X42</p>
-      <div className="flex gap-4">
-        <input className="rounded-lg" />
-        <button onClick={onConnect} className="bg-primary text-white">
-          OK
+    <div className="connect-container">
+      <div className="step-indicator">
+        <span className="step-number">2</span> /
+        <span className="step-number-total">2</span>
+      </div>
+      <h1 className="title">Connect Your Partner</h1>
+      <div className="number-section">
+        <p>
+          Your Number : <b>3Q4X4</b>
+        </p>
+        <h2 className="user-number"></h2>
+      </div>
+      <div className="input-section">
+        <label className="input-label">Connect</label>
+        <input
+          type="text"
+          className="input-box"
+          placeholder="Partner’s Certification number"
+        />
+        <button className="skip-button">Skip now</button>
+        <button onClick={onConnect} className="confirm-button">
+          Confirm
         </button>
       </div>
     </div>

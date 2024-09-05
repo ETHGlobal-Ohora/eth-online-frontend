@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .connect-container {
+    width: 375px;
+    height: 812px;
+    overflow: hidden;
+    background: var(--Neutral-Light-Lightest, #FFF);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; 
+    justify-content: center;
+  }
+  
+  .header {
+    margin-bottom: 40px;
+  }
+  
+  .step-indicator {
+    font-weight: bold;
+    align-self: flex-start;
+  }
+
+  .step-number {
+    color: #2945FF;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-left:20px;
+  }
+
+  .step-number-total {
+    color: var(--Miscellaneous-Tab---Unselected, #999);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal; 
+    margin-left: 5px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bolder;
+    color: #1B1B1B;
+    margin-bottom: 20px;
+    font-family: Outfit;
+    line-height: 32px;
+    letter-spacing: 0.24px;
+    margin-right: 80px;
+  }
+  
+  .number-section {
+    margin: 20px 0;
+    color: var(--Grays-Black, #000);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.2px;
+  }
+  p {
+    padding: 50px;
+  }
+  b {
+    font-weight: 600;
+  }
+  
+  .input-section {
+    text-align: left;
+  }
+  
+  .input-label {
+    font-size: 14px;
+    font-family: Poppins;
+    color: #000;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .input-box {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    align-items: center;
+    align-self: stretch;
+    gap: 8px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 16px;
+    color: var(--Neutral-Dark-Lightest, #8F9098);
+  }
+  .skip-button {
+    width: 40%;
+    background-color: #e0e0e0; 
+    color: #6d6d6d;
+  }
+
+  
+  .confirm-button {
+    width: 40%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2945FF;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .confirm-button:hover {
+    background-color: #1d36cc;
+  }
+  

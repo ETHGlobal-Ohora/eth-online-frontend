@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const nav = useNavigate();
   const onLogin = () => {
-    nav("/connect-code");
+    nav("/profile");
   };
 
   return (
