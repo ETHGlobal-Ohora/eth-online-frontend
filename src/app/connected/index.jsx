@@ -1,7 +1,13 @@
 import React from "react";
 import "./Connected.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Connected() {
+  const nav = useNavigate();
+  const onConneceted = () => {
+    nav("/");
+  };
+
   return (
     <div className="connect-container">
       <h1 className="connect-title">Connected!</h1>
@@ -32,7 +38,7 @@ function Connected() {
           />
         </div>
       </div>
-      <p className="welcome-text">Welcome to Finance US!</p>
+      <button className="welcome-btn">Welcome to Bitween!</button>
     </div>
   );
 }

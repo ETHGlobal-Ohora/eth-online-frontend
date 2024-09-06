@@ -1,11 +1,12 @@
 import { createRoot } from "react-dom/client";
-import ConnectConfirm from "./app/connect_confirm/Connect_confirm";
+import ConnectConfirm from "./app/connect_confirm";
 import "./index.css";
 import Login from "./app/login";
 import Profile from "./app/profile";
 import ConnectCode from "./app/connect_code";
 import Connected from "./app/connected";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React from "react";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById("root")!).render(
   <RouterProvider router={router} />
 );

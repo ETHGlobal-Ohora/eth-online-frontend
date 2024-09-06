@@ -9,57 +9,44 @@ function Login() {
   };
 
   return (
-    <div className="container">
-      <header className="header">
+    <div className="login-container">
+      <header className="login-header">
         <img
-          src="/images/main_logo.png"
-          alt="Finance Us Illustration"
-          className="illustration"
+          src="/images/intersect2.svg"
+          alt="Bitween Character"
+          className="login-image"
         />
       </header>
 
       <div className="welcome-text">
-        <h2>Welcome!</h2>
-      </div>
-
-      <form className="login-form">
-        <input id="email" type="email" placeholder="Email" required />
-        <div className="password-container">
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            required
-          />
-          <img
-            src="/images/eye_invisible.svg"
-            alt="toggle visibility"
-            className="password-icon"
-          />
-        </div>
-        <a href="#" className="forgot-password">
-          Forgot password?
-        </a>
-        <button onClick={onLogin} type="submit" className="login-button">
-          Login
-        </button>
-      </form>
-
-      <div className="register">
+        <img
+          src="/images/bitween-logo.svg"
+          alt="Bitween Logo"
+          className="between-logo"
+        />
         <p>
-          Not a member? <a href="#">Register now</a>
+          Welcome! Bitween is a Web3 service for couples to manage shared
+          wallets, transfer funds, and communicate securely through an
+          integrated chat.
         </p>
       </div>
 
-      <hr className="divider" />
+      <button onClick={onLogin} className="google-login">
+        <img src="/images/google.svg" alt="Google" />
+        Continue with Google
+      </button>
 
-      <div>
-        <p className="continue-with">Or continue with</p>
-        <div className="social-icons">
-          <img src="/images/x_icon.svg" alt="X icon" />
-          <img src="/images/discord_icon.svg" alt="Discord icon" />
-          <img src="/images/tel_icon.svg" alt="Telegram icon" />
-        </div>
+      <hr></hr>
+      <div className="divider">Or continue with</div>
+
+      <div className="social-login">
+        <img src="/images/x_icon.svg" alt="X" />
+        <img src="/images/discord_icon.svg" alt="Discord" />
+        <img src="/images/tel_icon.svg" alt="Telegram" />
+      </div>
+
+      <div className="sign-up-options">
+        Sign up via<a href="#">email</a>or<a href="#">phone</a>
       </div>
     </div>
   );
