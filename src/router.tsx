@@ -12,9 +12,9 @@ export const AppRouter = () => {
       <Routes>
         <Route path="/">
           <Route index element={<Login />} />
-          <Route path="Profile" element={<Profile />} />
-          <Route path="ConnectCode" element={<ConnectCode />} />
-          <Route path="Connected" element={<Connected />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="connect-code" element={<ConnectCode />} />
+          <Route path="connected" element={<Connected />} />
         </Route>
       </Routes>
     </BrowserRouter>
