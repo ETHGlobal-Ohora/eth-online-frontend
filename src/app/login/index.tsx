@@ -1,12 +1,8 @@
 import React from "react";
 import "./Login.css";
-import { useNavigate } from "react-router-dom";
+import ConnectWeb3AuthButton from "../../components/ConnectWeb3AuthButton.tsx";
 
 function Login() {
-  const nav = useNavigate();
-  const onLogin = () => {
-    nav("/profile");
-  };
 
   return (
     <div className="login-container">
@@ -31,10 +27,12 @@ function Login() {
         </p>
       </div>
 
-      <button onClick={onLogin} className="google-login">
+      {/* <button onClick={onLogin} className="google-login">
         <img src="/images/google.svg" alt="Google" />
         Continue with Google
-      </button>
+      </button> */}
+
+      <ConnectWeb3AuthButton />
 
       <hr></hr>
       <div className="divider">Or continue with</div>
