@@ -16,8 +16,17 @@ export const chainConfig = {
   logo: "https://pbs.twimg.com/profile_images/1592915327343624195/HPPSuVx3_400x400.jpg",
 };
 
+import { MetamaskAdapter } from "@web3auth/metamask-adapter";
+const metamaskAdapter = new MetamaskAdapter({
+  clientId,
+  sessionTime: 3600, // 1 hour in seconds
+  web3AuthNetwork: "sapphire_mainnet",
+  chainConfig
+});
+
+
 export const privateKeyProvider = new EthereumPrivateKeyProvider({
-  config: { chainConfig },
+  config: { chainConfig, },
 });
 
 const web3auth = new Web3Auth({
@@ -25,5 +34,7 @@ const web3auth = new Web3Auth({
   web3AuthNetwork: WEB3AUTH_NETWORK.TESTNET,
   privateKeyProvider,
 });
+
+web3auth.configureAdapter(metamaskAdapter);
 
 export default web3auth;

@@ -1,11 +1,29 @@
 import React from "react";
 import "./Connected.css";
 import { Navigate, useNavigate } from "react-router-dom";
+import { MASTER_ADDRESS, PARTNER_ADDRESS } from "../../config";
+import { useGetSigner } from "../chat_screen/useGetSigner";
+import { Client, useCanMessage } from "@xmtp/react-sdk";
 
 function Connected() {
   const nav = useNavigate();
-  const onConneceted = () => {
-    nav("/");
+  const { canMessage } = useCanMessage();
+  const getSigner = useGetSigner();
+
+  async function createClient() {
+    const signer = await getSigner();
+    const me = await signer.getAddress();
+    const to = me === MASTER_ADDRESS ? PARTNER_ADDRESS : MASTER_ADDRESS;
+    const client = await Client.create(signer, {
+      persistConversations: true,
+    });
+
+    return client.canMessage(to);
+  }
+  const onConneceted = async () => {
+    // const canConnect = await createClient();
+    // if (canConnect) 
+      nav("/chat-screen");
   };
 
   return (
@@ -38,7 +56,9 @@ function Connected() {
           />
         </div>
       </div>
-      <button className="welcome-btn">Welcome to Bitween!</button>
+      <button onClick={onConneceted} className="welcome-btn">
+        Welcome to Bitween!
+      </button>
     </div>
   );
 }
