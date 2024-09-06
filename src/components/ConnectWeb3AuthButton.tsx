@@ -1,4 +1,3 @@
-import { useWeb3Auth } from "@web3auth/modal-react-hooks";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import web3auth from "../config/web3auth.config";
@@ -7,7 +6,7 @@ const ConnectWeb3AuthButton = () => {
   const nav = useNavigate();
   const handleConnect = async() => {
     await web3auth.connect()
-    nav("/connect-code")
+    nav("/profile")
   }
 
   return (
