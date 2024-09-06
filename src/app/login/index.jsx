@@ -1,12 +1,8 @@
 import React from "react";
 import "./Login.css";
-import { useNavigate } from "react-router-dom";
+import ConnectWeb3AuthButton from "../../components/ConnectWeb3AuthButton.tsx";
 
 function Login() {
-  const nav = useNavigate();
-  const onLogin = () => {
-    nav("/profile");
-  };
 
   return (
     <div className="container">
@@ -20,30 +16,8 @@ function Login() {
 
       <div className="welcome-text">
         <h2>Welcome!</h2>
-      </div>
-
-      <form className="login-form">
-        <input id="email" type="email" placeholder="Email" required />
-        <div className="password-container">
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            required
-          />
-          <img
-            src="/images/eye_invisible.svg"
-            alt="toggle visibility"
-            className="password-icon"
-          />
-        </div>
-        <a href="#" className="forgot-password">
-          Forgot password?
-        </a>
-        <button onClick={onLogin} type="submit" className="login-button">
-          Login
-        </button>
-      </form>
+      </div>       
+        <ConnectWeb3AuthButton />
 
       <div className="register">
         <p>
