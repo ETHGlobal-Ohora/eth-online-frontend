@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@safe-global/api-kit": "^2.4.5",
+    "@safe-global/protocol-kit": "^4.1.0",
+    "@safe-global/safe-core-sdk-types": "^5.1.0",
     "@tailwindcss/forms": "^0.5.7",
     "@toruslabs/config": "^2.0.2",
     "@toruslabs/eccrypto": "^4.0.0",

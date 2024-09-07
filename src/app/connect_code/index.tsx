@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ConnectCode.css";
 import { useNavigate } from "react-router-dom";
+import { ethers, Signer } from "ethers";
+import Safe, {
+  SafeAccountConfig,
+  SafeFactory,
+} from "@safe-global/protocol-kit";
+import SafeApiKit from "@safe-global/api-kit";
+import { EthersAdapter } from "@safe-global/protocol-kit";
 
 function ConnectCode() {
   const nav = useNavigate();
-  const onConnect = () => {
+  const [walletAddress, setWalletAddress] = useState("");
+
+  const handleInputChange = (event) => {
+    setWalletAddress(event.target.value);
+  };
+  const handleSubmit = () => {
     nav("/connected");
   };
 
@@ -28,8 +40,14 @@ function ConnectCode() {
       </div>
 
       <div className="input-section">
-        <button className="skip-button">Skip now</button>
-        <button onClick={onConnect} className="confirm-button">
+        <input
+          type="text"
+          className="input-field"
+          placeholder="Enter your partner's code"
+          value={walletAddress}
+          onChange={handleInputChange}
+        />
+        <button onClick={handleSubmit} className="confirm-button">
           Confirm
         </button>
       </div>
