@@ -35,7 +35,7 @@ function Login() {
 
       <ConnectWeb3AuthButton />
 
-      <hr></hr>
+      <hr className="bg-gray-400 flex mt-2 mb-2 ml-auto mr-auto border-solid border-1"></hr>
       <div className="divider">Or continue with</div>
 
       <div className="social-login">

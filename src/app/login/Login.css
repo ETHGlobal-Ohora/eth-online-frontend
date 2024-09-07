@@ -108,14 +108,3 @@ body {
   font-weight: 400;
   line-height: normal;
 }
-
-hr {
-  color: #71727A;
-  display: flex;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: inset;
-  border-width: 0.5px;
-}
