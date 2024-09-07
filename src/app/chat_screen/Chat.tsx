@@ -2,11 +2,8 @@ import {
   Client,
   Conversation,
   DecodedMessage,
-  Message,
-  useMessages,
-  useStreamMessages,
 } from "@xmtp/react-sdk";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MASTER_ADDRESS, PARTNER_ADDRESS } from "../../config";
 
 interface ChatProps {
@@ -20,83 +17,117 @@ export default function Chat({ client }: ChatProps) {
 
   const me = client.address;
   const to = me === MASTER_ADDRESS ? PARTNER_ADDRESS : MASTER_ADDRESS;
-  const findConversation = async () => {
 
+  const findConversation = async () => {
     await client.conversations.newConversation(to);
     const allConversations = await client.conversations.list();
-
-    // 최신 채팅방
     const chatroom = allConversations.sort(
       (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
     )[0];
-
     setChatroom(chatroom);
     setMessages(await chatroom.messages());
   };
 
-  // Listen to new msg
   useEffect(() => {
     if (!client) return;
-    console.log(client);
     findConversation();
   }, [client]);
 
   useEffect(() => {
     if (!chatroom) return;
-    chatroom.streamMessages().then(async (res) => {
-      const newMsg = await res.next();
-      setMessages((prev) => [...prev, newMsg.value]);
-    });
+
+    const streamMessages = async () => {
+      const stream = await chatroom.streamMessages();
+      for await (const newMsg of stream) {
+        setMessages((prev) => [...prev, newMsg]);
+      }
+    };
+
+    streamMessages();
   }, [chatroom?.topic]);
 
-  const onSendMessage = () => {
-    if (!text) return;
-    if (!chatroom) return;
-    chatroom.send(text);
+  const onSendMessage = async () => {
+    if (!text || !chatroom) return;
+
+    // Send the message through XMTP
+    await chatroom.send(text);
+
+    // Append the new message to the message list
+    const newMessage = {
+      id: `${Date.now()}`,
+      messageVersion: "v1",
+      senderAddress: me,
+      contentTopic: "default",
+      content: text,
+      sent: new Date(),
+      conversation: chatroom,
+    };
+    
+    setMessages((prev:any) => {
+      return [...prev, newMessage];
+    });
     setText("");
   };
 
-  const onChangeMsg = (e: any) => {
-    setText(e.target.value);
-  };
-
   return (
-    <div className="h-screen">
-
-    <div className="w-[420px] mx-auto h-full bg-white flex flex-col">
-      <div className="flex flex-1 flex-col gap-2">
-        {messages.map((msg) => {
-
-          if(msg.senderAddress === me) {
-            return (
-              <div className="flex flex-col items-end">
-                <p>Me</p>
-                <p>{msg.content}</p>
-                </div>
-            )
-          } else {
-            return (
-              <div className="flex">
-                <p>상대</p>
-                <p>{msg.content}</p>
-                </div>
-            )
-
-          }
-          
-        })}
+    <div className="h-screen flex flex-col bg-white">
+      <div className="chat-header flex p-4 justify-between align-center">
+        <div className="user-info flex align-center">
+          <img src="/images/go-back.svg" alt="back image" className="go-back" />
+          <img
+            src="/images/profile-image.svg"
+            alt="profile image"
+            className="profile-pic"
+          />
+          <h2 className="profile-name text-blue-600 text-2xl font-extrabold">
+            Alice
+          </h2>
+        </div>
+        <div className="chat-options">
+          <img src="/images/3-line.svg" alt="chat-options" className="3-line" />
+        </div>
       </div>
 
-      <div className="flex gap-2 p-4">
-        <input className="px-1 flex-1 h-9 border border-neutral-200 rounded-xl" value={text} onChange={onChangeMsg} />
-        <button
-          className="bg-primary px-4 text-sm h-9 text-white rounded-xl"
-          onClick={onSendMessage}
-        >
-          Send
-        </button>
+      <hr className="bg-gray-400" />
+      <div className="w-[420px] mx-auto h-full bg-white flex flex-col">
+        <div className="flex flex-1 flex-col">
+          {messages.map((msg) => {
+            if (msg.senderAddress === me) {
+              return (
+                <div className="flex flex-col items-end p-3">
+                  <p className="mytext rounded-2xl bg-blue-700 text-white items-start p-3">
+                    {msg.content}
+                  </p>
+                  <p className="clock">me</p>
+                </div>
+              );
+            } else {
+              return (
+                <div className="flex flex-col items-start p-3">
+                  <p className="totext rounded-2xl bg-blue-100 text-black items-start p-3">
+                    {msg.content}
+                  </p>
+                  <p className="clock">상대</p>
+                </div>
+              );
+            }
+          })}
+        </div>
+
+        <div className="flex gap-2 p-4">
+          <input
+            className="px-1 flex-1 h-9 border border-neutral-200 rounded-xl"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <button
+            className="bg-primary px-4 text-sm h-9 text-white rounded-3xl"
+            onClick={onSendMessage}
+          >
+            Send
+          </button>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
