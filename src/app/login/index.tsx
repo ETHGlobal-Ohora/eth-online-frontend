@@ -7,7 +7,7 @@ function Login() {
 
   return (
     <div className="login-container">
-      <header className="login-header">
+      <header className="login-header ml-8">
         <img
           src="/images/intersect2.svg"
           alt="Bitween Character"
@@ -15,13 +15,13 @@ function Login() {
         />
       </header>
 
-      <div className="welcome-text">
+      <div className="welcome-text ml-4">
         <img
           src="/images/bitween-logo.svg"
           alt="Bitween Logo"
-          className="between-logo"
+          className="between-logo ml-4 justify-center"
         />
-        <p>
+        <p className="gap-3 p-8">
           Welcome! Bitween is a Web3 service for couples to manage shared
           wallets, transfer funds, and communicate securely through an
           integrated chat.

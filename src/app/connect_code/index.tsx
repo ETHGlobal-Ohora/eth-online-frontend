@@ -82,10 +82,10 @@ function ConnectCode() {
         <span className="step-number">2</span> /
         <span className="step-number-total">2</span>
       </div>
-      <h1 className="title">Connect Your Partner</h1>
+      <h1 className="title pr-12">Connect Your Partner</h1>
 
       <div className="number-section">
-        <p className="connect-wallet">
+        <p className="connect-wallet p-10">
           <b>Connect Wallet Link</b>
         </p>
         <img

@@ -14,6 +14,15 @@ export default function Chat({ client }: ChatProps) {
   const [chatroom, setChatroom] = useState<Conversation>();
   const [messages, setMessages] = useState<DecodedMessage[]>([]);
   const [text, setText] = useState<string>("");
+  const [inputText, setInputText] = useState<string>("");
+  const activeButton = () => {
+    console.log("input");
+  }
+  const activeEnter = (e) => {
+    if(e.key === "Enter") {
+      activeButton();
+    }
+  }
 
   const me = client.address;
   const to = me === MASTER_ADDRESS ? PARTNER_ADDRESS : MASTER_ADDRESS;
@@ -46,6 +55,10 @@ export default function Chat({ client }: ChatProps) {
     streamMessages();
   }, [chatroom?.topic]);
 
+  const clearMessages = () => {
+    setMessages([]);
+  };
+
   const onSendMessage = async () => {
     if (!text || !chatroom) return;
 
@@ -62,18 +75,20 @@ export default function Chat({ client }: ChatProps) {
       sent: new Date(),
       conversation: chatroom,
     };
-    
+
+
     setMessages((prev:any) => {
       return [...prev, newMessage];
     });
+
     setText("");
   };
 
   return (
-    <div className="h-screen flex flex-col bg-white">
-      <div className="chat-header flex p-4 justify-between align-center">
-        <div className="user-info flex align-center">
-          <img src="/images/go-back.svg" alt="back image" className="go-back" />
+    <div className="h-screen flex flex-col bg-white overflow-y-auto">
+      <div className="chat-header flex p-4 gap-3 justify-between align-center">
+        <div className="user-info flex align-center gap-3">
+          <img onClick={clearMessages} src="/images/go-back.svg" alt="back image" className="go-back" />
           <img
             src="/images/profile-image.svg"
             alt="profile image"
@@ -83,7 +98,7 @@ export default function Chat({ client }: ChatProps) {
             Alice
           </h2>
         </div>
-        <div className="chat-options">
+        <div className="chat-options mt-3">
           <img src="/images/3-line.svg" alt="chat-options" className="3-line" />
         </div>
       </div>
@@ -107,7 +122,7 @@ export default function Chat({ client }: ChatProps) {
                   <p className="totext rounded-2xl bg-blue-100 text-black items-start p-3">
                     {msg.content}
                   </p>
-                  <p className="clock">상대</p>
+                  <p className="clock">Alice</p>
                 </div>
               );
             }
@@ -119,10 +134,20 @@ export default function Chat({ client }: ChatProps) {
             className="px-1 flex-1 h-9 border border-neutral-200 rounded-xl"
             value={text}
             onChange={(e) => setText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                onSendMessage(); 
+                setText("");
+              }
+            }}
           />
           <button
             className="bg-primary px-4 text-sm h-9 text-white rounded-3xl"
-            onClick={onSendMessage}
+            onClick={() => {
+              onSendMessage(); 
+              setText("");
+              activeButton(); 
+            }}
           >
             Send
           </button>
