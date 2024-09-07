@@ -10,7 +10,7 @@ body {
 }
 
 .profile-container {
-  width: 375px;
+  width: 420px;
   height: 812px;
   overflow: hidden;
   background: var(--Neutral-Light-Lightest, #FFF);

@@ -5,6 +5,7 @@ import Profile from "./app/profile/index";
 import ConnectCode from "./app/connect_code/index";
 import Connected from "./app/connected/index";
 import React from "react";
+import ChatScreen from "./app/chat_screen";
 
 export const AppRouter = () => {
   return (
@@ -15,6 +16,7 @@ export const AppRouter = () => {
           <Route path="profile" element={<Profile />} />
           <Route path="connect-code" element={<ConnectCode />} />
           <Route path="connected" element={<Connected />} />
+          <Route path="chat-screen" element={<ChatScreen />} />
         </Route>
       </Routes>
     </BrowserRouter>

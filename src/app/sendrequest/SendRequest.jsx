@@ -1,5 +1,4 @@
 import React from "react";
-import "./SendRequest.css";
 
 function SendRequest() {
   return (

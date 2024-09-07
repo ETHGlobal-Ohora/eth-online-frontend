@@ -1,6 +1,7 @@
 import React from "react";
 import "./Login.css";
 import ConnectWeb3AuthButton from "../../components/ConnectWeb3AuthButton.tsx";
+import web3auth from "../../config/web3auth.config.ts";
 
 function Login() {
 
@@ -38,7 +39,13 @@ function Login() {
       <div className="divider">Or continue with</div>
 
       <div className="social-login">
-        <img src="/images/x_icon.svg" alt="X" />
+        <img
+        onClick={async() => {
+          await web3auth.logout()
+          alert("logout")
+        }}
+        
+        src="/images/x_icon.svg" alt="X" />
         <img src="/images/discord_icon.svg" alt="Discord" />
         <img src="/images/tel_icon.svg" alt="Telegram" />
       </div>

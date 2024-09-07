@@ -10,7 +10,7 @@ body {
   }
   
   .connect-container {
-    width: 375px;
+    width: 420px;
     height: 812px;
     overflow: hidden;
     background: var(--Neutral-Light-Lightest, #FFF);
@@ -85,10 +85,6 @@ body {
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.2px;
-  }
-
-  p {
-    padding: 40px 0px 20px 0px;
   }
   
   .input-section {
